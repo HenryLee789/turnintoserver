@@ -1007,7 +1007,7 @@ private final class PreferencesUpdateViewModel: ObservableObject {
         }
     }
 
-    static let githubURL = URL(string: "https://github.com/QianYushi/turnintoserver")!
+    static let githubURL = URL(string: "https://github.com/HenryLee789/turnintoserver")!
 
     static var currentVersionDisplay: String {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
@@ -1067,7 +1067,7 @@ private final class PreferencesUpdateViewModel: ObservableObject {
         }
 
         do {
-            var request = URLRequest(url: URL(string: "https://api.github.com/repos/QianYushi/turnintoserver/releases/latest")!)
+            var request = URLRequest(url: URL(string: "https://api.github.com/repos/HenryLee789/turnintoserver/releases/latest")!)
             request.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
             request.setValue("turnintoserver", forHTTPHeaderField: "User-Agent")
 

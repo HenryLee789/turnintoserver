@@ -1,0 +1,5 @@
+build/
+backups/
+dist/
+.codex/
+.DS_Store

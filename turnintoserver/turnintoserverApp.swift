@@ -1676,23 +1676,59 @@ private enum MenuBarStatusIconRenderer {
         circle.lineWidth = 1
         circle.stroke()
 
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: NSFont.monospacedSystemFont(ofSize: 10, weight: .bold),
-            .foregroundColor: NSColor.white
-        ]
-        let attributedText = NSAttributedString(string: text, attributes: attributes)
-        let textSize = attributedText.size()
-        let textRect = NSRect(
-            x: bounds.midX - textSize.width / 2,
-            y: bounds.midY - textSize.height / 2 - 0.5,
-            width: textSize.width,
-            height: textSize.height
-        )
-        attributedText.draw(in: textRect)
+        drawStatusLetter(text, in: bounds)
 
         image.cacheMode = .never
         image.isTemplate = false
         return image
+    }
+
+    private static func drawStatusLetter(_ text: String, in bounds: NSRect) {
+        let path = NSBezierPath()
+        path.lineWidth = 1.7
+        path.lineCapStyle = .round
+        path.lineJoinStyle = .round
+
+        switch text.uppercased() {
+        case "B":
+            path.move(to: NSPoint(x: bounds.midX - 3.2, y: bounds.midY - 4.3))
+            path.line(to: NSPoint(x: bounds.midX - 3.2, y: bounds.midY + 4.3))
+            path.line(to: NSPoint(x: bounds.midX + 0.8, y: bounds.midY + 4.3))
+            path.curve(
+                to: NSPoint(x: bounds.midX + 0.8, y: bounds.midY),
+                controlPoint1: NSPoint(x: bounds.midX + 4.1, y: bounds.midY + 4.3),
+                controlPoint2: NSPoint(x: bounds.midX + 4.1, y: bounds.midY)
+            )
+            path.line(to: NSPoint(x: bounds.midX - 3.2, y: bounds.midY))
+            path.move(to: NSPoint(x: bounds.midX - 3.2, y: bounds.midY))
+            path.line(to: NSPoint(x: bounds.midX + 1.1, y: bounds.midY))
+            path.curve(
+                to: NSPoint(x: bounds.midX + 0.7, y: bounds.midY - 4.3),
+                controlPoint1: NSPoint(x: bounds.midX + 4.5, y: bounds.midY),
+                controlPoint2: NSPoint(x: bounds.midX + 4.5, y: bounds.midY - 4.3)
+            )
+            path.line(to: NSPoint(x: bounds.midX - 3.2, y: bounds.midY - 4.3))
+        default:
+            path.move(to: NSPoint(x: bounds.midX + 3.2, y: bounds.midY + 4.0))
+            path.curve(
+                to: NSPoint(x: bounds.midX - 3.0, y: bounds.midY + 1.2),
+                controlPoint1: NSPoint(x: bounds.midX - 0.4, y: bounds.midY + 5.0),
+                controlPoint2: NSPoint(x: bounds.midX - 3.8, y: bounds.midY + 4.1)
+            )
+            path.curve(
+                to: NSPoint(x: bounds.midX + 3.0, y: bounds.midY - 1.2),
+                controlPoint1: NSPoint(x: bounds.midX - 2.2, y: bounds.midY - 0.7),
+                controlPoint2: NSPoint(x: bounds.midX + 2.3, y: bounds.midY + 0.6)
+            )
+            path.curve(
+                to: NSPoint(x: bounds.midX - 3.2, y: bounds.midY - 4.0),
+                controlPoint1: NSPoint(x: bounds.midX + 3.8, y: bounds.midY - 4.1),
+                controlPoint2: NSPoint(x: bounds.midX + 0.4, y: bounds.midY - 5.0)
+            )
+        }
+
+        NSColor.white.withAlphaComponent(0.95).setStroke()
+        path.stroke()
     }
 
     private static func menuStatusLight(color: NSColor) -> NSImage {

@@ -1,6 +1,19 @@
 # turnintoserver
 
-[English](README.en.md) · [产品页面](https://qianyushi.github.io/turnintoserver/)
+[English](README.en.md) · [本修复版下载](https://github.com/HenryLee789/turnintoserver/releases/latest) · [原项目](https://github.com/QianYushi/turnintoserver)
+
+## 本修复版说明
+
+这是 `HenryLee789/turnintoserver` 维护的修复版 fork，基于原项目 `QianYushi/turnintoserver` 的 `v1.2` 版本。
+
+原项目地址：<https://github.com/QianYushi/turnintoserver>
+
+本修复版只针对一个已复现的崩溃问题做最小改动：原版在菜单栏状态图标刷新时，会用 CoreText 绘制圆点中的 `S/B` 字母；当 macOS 触发屏幕参数、菜单栏或 backing scale 变化时，可能抛出 `NSInvalidArgumentException: attempt to insert nil object from objects[0]`，导致 app 自动退出。本修复版改为用矢量路径绘制状态字母，避开该 CoreText 崩溃路径。
+
+修复版版本：`1.2.1 (11)`  
+下载地址：<https://github.com/HenryLee789/turnintoserver/releases/latest>
+
+说明：原项目当前快照没有单独的 LICENSE 文件。本 fork 保留原项目来源和原 README 内容，仅发布这个崩溃修复版。若下载的是本 fork 的临时签名构建，macOS 首次打开时可能需要右键选择“打开”。
 
 <p>
   <img src="https://qianyushi.github.io/turnintoserver/icon.png" alt="turnintoserver app icon" width="96" height="96">
@@ -41,7 +54,7 @@ Mac 继续工作。
 
 下载最新版：
 
-https://github.com/QianYushi/turnintoserver/releases/latest
+https://github.com/HenryLee789/turnintoserver/releases/latest
 
 然后：
 

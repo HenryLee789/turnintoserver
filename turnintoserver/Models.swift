@@ -313,7 +313,7 @@ enum AppText {
     }
 
     static var githubURLDisplay: String {
-        "https://github.com/QianYushi/turnintoserver"
+        "https://github.com/HenryLee789/turnintoserver"
     }
 
     static var shortcutHintsTitle: String {

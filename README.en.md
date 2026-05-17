@@ -1,6 +1,19 @@
 # turnintoserver
 
-[中文](README.md) · [Product page](https://qianyushi.github.io/turnintoserver/)
+[中文](README.md) · [Fixed build download](https://github.com/HenryLee789/turnintoserver/releases/latest) · [Original project](https://github.com/QianYushi/turnintoserver)
+
+## Fixed Fork Notice
+
+This is a fixed fork maintained at `HenryLee789/turnintoserver`, based on `v1.2` of the original project `QianYushi/turnintoserver`.
+
+Original project: <https://github.com/QianYushi/turnintoserver>
+
+This fork makes one focused fix for a reproduced crash. The original build could crash while refreshing the menu bar status icon because the `S/B` status letter was drawn through CoreText. When macOS reported display, menu bar, or backing-scale changes, that drawing path could raise `NSInvalidArgumentException: attempt to insert nil object from objects[0]` and the app would quit. This fork draws the status letter with vector paths instead, avoiding that CoreText crash path.
+
+Fixed fork version: `1.2.1 (11)`  
+Download: <https://github.com/HenryLee789/turnintoserver/releases/latest>
+
+Note: this upstream snapshot does not include a standalone LICENSE file. This fork keeps the original project attribution and README content, and only publishes the crash fix. If you download a locally/ad-hoc signed build from this fork, macOS may require right-clicking the app and choosing Open the first time.
 
 <p>
   <img src="https://qianyushi.github.io/turnintoserver/icon.png" alt="turnintoserver app icon" width="96" height="96">
@@ -41,7 +54,7 @@ I built it because I wanted to use a MacBook as a small temporary server. Most k
 
 Download the latest version:
 
-https://github.com/QianYushi/turnintoserver/releases/latest
+https://github.com/HenryLee789/turnintoserver/releases/latest
 
 Then:
 
